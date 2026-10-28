@@ -1,0 +1,578 @@
+{
+ "/": {
+  "date": "2026-10-28",
+  "hash": "c18d2db9fd90"
+ },
+ "/knigi/36-ulic/": {
+  "date": "2026-10-28",
+  "hash": "f5d7b522e476"
+ },
+ "/knigi/adept/": {
+  "date": "2026-10-28",
+  "hash": "d261dac0bebd"
+ },
+ "/knigi/advokat/": {
+  "date": "2026-10-28",
+  "hash": "66b4e6f65091"
+ },
+ "/knigi/agla-abraksas/": {
+  "date": "2026-10-28",
+  "hash": "8beee5e5fc8a"
+ },
+ "/knigi/agla-alef/": {
+  "date": "2026-10-28",
+  "hash": "ef3ea343f728"
+ },
+ "/knigi/agla-avrora/": {
+  "date": "2026-10-28",
+  "hash": "40732b54a023"
+ },
+ "/knigi/blokirovka/": {
+  "date": "2026-10-28",
+  "hash": "3baa57d19c4d"
+ },
+ "/knigi/bluzhdayuschiy-traktir/": {
+  "date": "2026-10-28",
+  "hash": "6f10c6bb7ae4"
+ },
+ "/knigi/bunker/": {
+  "date": "2026-10-28",
+  "hash": "f94c3097c8b5"
+ },
+ "/knigi/centralnaya-stanciya/": {
+  "date": "2026-10-28",
+  "hash": "edec6b3584ab"
+ },
+ "/knigi/chetki/": {
+  "date": "2026-10-28",
+  "hash": "d91df142f7c0"
+ },
+ "/knigi/derzhavy-zemnye/": {
+  "date": "2026-10-28",
+  "hash": "2c89c2e8ee00"
+ },
+ "/knigi/deti-pamyati/": {
+  "date": "2026-10-28",
+  "hash": "21a74540546d"
+ },
+ "/knigi/deti-razrusheniya/": {
+  "date": "2026-10-28",
+  "hash": "62b4f12bb719"
+ },
+ "/knigi/deti-vremeni/": {
+  "date": "2026-10-28",
+  "hash": "5e202dd29390"
+ },
+ "/knigi/dom-keko/": {
+  "date": "2026-10-28",
+  "hash": "671852f2a0ed"
+ },
+ "/knigi/dom-v-kotorom/": {
+  "date": "2026-10-28",
+  "hash": "dfa73322c0f2"
+ },
+ "/knigi/dusha-pokrytaya-shramami/": {
+  "date": "2026-10-28",
+  "hash": "571bcb625180"
+ },
+ "/knigi/dvenadcat-koroley-sharahaya/": {
+  "date": "2026-10-28",
+  "hash": "5adf470fe223"
+ },
+ "/knigi/fraktalnyy-princ/": {
+  "date": "2026-10-28",
+  "hash": "08304fdc0628"
+ },
+ "/knigi/gorod-bezdny/": {
+  "date": "2026-10-28",
+  "hash": "4286e637333a"
+ },
+ "/knigi/gorod-kotorym-my-stali/": {
+  "date": "2026-10-28",
+  "hash": "2a22f85feaa8"
+ },
+ "/knigi/gorod-lestnic/": {
+  "date": "2026-10-28",
+  "hash": "5d92ba145eba"
+ },
+ "/knigi/granica-temnoty/": {
+  "date": "2026-10-28",
+  "hash": "d8bb21a16ccf"
+ },
+ "/knigi/hroniki-derdeyna-trilogiya/": {
+  "date": "2026-10-28",
+  "hash": "9b0ef5dbc4c3"
+ },
+ "/knigi/hroniki-narnii-vse-7-povestey/": {
+  "date": "2026-10-28",
+  "hash": "44f92314ac53"
+ },
+ "/knigi/igra-v-krolikov/": {
+  "date": "2026-10-28",
+  "hash": "576c3b9fa307"
+ },
+ "/knigi/imperiya-tishiny/": {
+  "date": "2026-10-28",
+  "hash": "f175ccd4134d"
+ },
+ "/knigi/ischislenie-obema/": {
+  "date": "2026-10-28",
+  "hash": "cfcc2b987fba"
+ },
+ "/knigi/kauzalnyy-angel/": {
+  "date": "2026-10-28",
+  "hash": "f52ce7d4136b"
+ },
+ "/knigi/kit/": {
+  "date": "2026-10-28",
+  "hash": "b9daa5327710"
+ },
+ "/knigi/klara-i-solnce/": {
+  "date": "2026-10-28",
+  "hash": "cdf7b1eb49d9"
+ },
+ "/knigi/kniga-dozhdya/": {
+  "date": "2026-10-28",
+  "hash": "a3539086a5ad"
+ },
+ "/knigi/kogda-zapoyut-mertvecy/": {
+  "date": "2026-10-28",
+  "hash": "4b19305d0eb3"
+ },
+ "/knigi/korol-boli/": {
+  "date": "2026-10-28",
+  "hash": "6a004ac5d9c1"
+ },
+ "/knigi/korol-otverzhennyh/": {
+  "date": "2026-10-28",
+  "hash": "aef583b3eb05"
+ },
+ "/knigi/korol/": {
+  "date": "2026-10-28",
+  "hash": "052a6f896307"
+ },
+ "/knigi/korporaciya-imagen/": {
+  "date": "2026-10-28",
+  "hash": "a8bf00c38b5d"
+ },
+ "/knigi/kroatoan/": {
+  "date": "2026-10-28",
+  "hash": "2f0f4d4ee40e"
+ },
+ "/knigi/kvantovyy-vor/": {
+  "date": "2026-10-28",
+  "hash": "48e9ee95e668"
+ },
+ "/knigi/laciy-mir-noemov/": {
+  "date": "2026-10-28",
+  "hash": "c44b6e176828"
+ },
+ "/knigi/lagranzh-pisma-s-zemli/": {
+  "date": "2026-10-28",
+  "hash": "715545f474ed"
+ },
+ "/knigi/levorukie-knigotorgovcy-londona/": {
+  "date": "2026-10-28",
+  "hash": "90d65f9c2063"
+ },
+ "/knigi/limb/": {
+  "date": "2026-10-28",
+  "hash": "1847844a52cc"
+ },
+ "/knigi/milost-bogov/": {
+  "date": "2026-10-28",
+  "hash": "44a3585a1e00"
+ },
+ "/knigi/mittelshpil/": {
+  "date": "2026-10-28",
+  "hash": "e8be8c4368c7"
+ },
+ "/knigi/molitva-dlya-zastenchivoy-krony/": {
+  "date": "2026-10-28",
+  "hash": "da7620f93cdf"
+ },
+ "/knigi/nad-bezdnoy/": {
+  "date": "2026-10-28",
+  "hash": "b46938bf61cf"
+ },
+ "/knigi/naslednik/": {
+  "date": "2026-10-28",
+  "hash": "0bc001bb7dca"
+ },
+ "/knigi/navola/": {
+  "date": "2026-10-28",
+  "hash": "b52f589e77e9"
+ },
+ "/knigi/neyromant/": {
+  "date": "2026-10-28",
+  "hash": "008290561697"
+ },
+ "/knigi/orbita-smerti/": {
+  "date": "2026-10-28",
+  "hash": "b2c55e5926ec"
+ },
+ "/knigi/otel-paradoks/": {
+  "date": "2026-10-28",
+  "hash": "9c8bca4cede9"
+ },
+ "/knigi/padenie-vavilona/": {
+  "date": "2026-10-28",
+  "hash": "cee775e3d0e4"
+ },
+ "/knigi/paydeya/": {
+  "date": "2026-10-28",
+  "hash": "129eea52e3d4"
+ },
+ "/knigi/pesn-pervogo-klinka/": {
+  "date": "2026-10-28",
+  "hash": "35b4a28e9954"
+ },
+ "/knigi/plastikovyy-okean/": {
+  "date": "2026-10-28",
+  "hash": "e3ebe8e7c30c"
+ },
+ "/knigi/platforma/": {
+  "date": "2026-10-28",
+  "hash": "9efe41aefbe1"
+ },
+ "/knigi/pletenyy-muzh-rasskaz/": {
+  "date": "2026-10-28",
+  "hash": "05b1f7c9d3b6"
+ },
+ "/knigi/po-zvezdam-psa-sozvezdie-psa/": {
+  "date": "2026-10-28",
+  "hash": "b12a2a6841eb"
+ },
+ "/knigi/polnoch-v-morskom-gorode/": {
+  "date": "2026-10-28",
+  "hash": "722332040522"
+ },
+ "/knigi/polostan/": {
+  "date": "2026-10-28",
+  "hash": "084972258341"
+ },
+ "/knigi/posolskiy-gorod/": {
+  "date": "2026-10-28",
+  "hash": "c6c84747c07f"
+ },
+ "/knigi/prekrasnaya-zvezda/": {
+  "date": "2026-10-28",
+  "hash": "108c05101012"
+ },
+ "/knigi/prizraki-vengi/": {
+  "date": "2026-10-28",
+  "hash": "64a94cc1f6b0"
+ },
+ "/knigi/psalom-dlya-sozdannyh-v-dikoy-prirode/": {
+  "date": "2026-10-28",
+  "hash": "2c862d9b73c6"
+ },
+ "/knigi/ranee-izvestnaya-kak-amerika/": {
+  "date": "2026-10-28",
+  "hash": "3fc75d05710f"
+ },
+ "/knigi/rayskie-psy/": {
+  "date": "2026-10-28",
+  "hash": "bcff56f1d546"
+ },
+ "/knigi/reka-bogov/": {
+  "date": "2026-10-28",
+  "hash": "d48259f6059b"
+ },
+ "/knigi/reki-londona/": {
+  "date": "2026-10-28",
+  "hash": "a009c3d36c07"
+ },
+ "/knigi/rubezh/": {
+  "date": "2026-10-28",
+  "hash": "896dc0430d23"
+ },
+ "/knigi/ruka-korolya-solnca/": {
+  "date": "2026-10-28",
+  "hash": "21002f7ca317"
+ },
+ "/knigi/ruka-sfinksa/": {
+  "date": "2026-10-28",
+  "hash": "58064ba7f930"
+ },
+ "/knigi/rycar/": {
+  "date": "2026-10-28",
+  "hash": "5b326c845fa2"
+ },
+ "/knigi/sataninskoe-tango/": {
+  "date": "2026-10-28",
+  "hash": "e578a87ef22a"
+ },
+ "/knigi/seansy-odnovremennogo-chteniya/": {
+  "date": "2026-10-28",
+  "hash": "5398e474774c"
+ },
+ "/knigi/semiozis/": {
+  "date": "2026-10-28",
+  "hash": "c43c17de8389"
+ },
+ "/knigi/siniy-fonar-sbornik-rasskazov/": {
+  "date": "2026-10-28",
+  "hash": "a2d0b058bdc7"
+ },
+ "/knigi/sozhrannyy-kosmos/": {
+  "date": "2026-10-28",
+  "hash": "51ab6433cbdd"
+ },
+ "/knigi/spyaschie-krasavicy/": {
+  "date": "2026-10-28",
+  "hash": "c59dd5145380"
+ },
+ "/knigi/syny-tmy/": {
+  "date": "2026-10-28",
+  "hash": "8032dc75b254"
+ },
+ "/knigi/ta-chto-stala-solncem/": {
+  "date": "2026-10-28",
+  "hash": "810512056145"
+ },
+ "/knigi/ten-bogov/": {
+  "date": "2026-10-28",
+  "hash": "071501ae445e"
+ },
+ "/knigi/tiraniya-babochki/": {
+  "date": "2026-10-28",
+  "hash": "486520b8802f"
+ },
+ "/knigi/trikster-germes-dzhoker/": {
+  "date": "2026-10-28",
+  "hash": "1da825ddbff1"
+ },
+ "/knigi/ubiystvo-i-neupokoennye-duhi/": {
+  "date": "2026-10-28",
+  "hash": "94219bd1033f"
+ },
+ "/knigi/ugli-voyny/": {
+  "date": "2026-10-28",
+  "hash": "17ab1e27f62c"
+ },
+ "/knigi/uliss/": {
+  "date": "2026-10-28",
+  "hash": "30b183b05dd3"
+ },
+ "/knigi/valis/": {
+  "date": "2026-10-28",
+  "hash": "64ebf78ebd24"
+ },
+ "/knigi/volshebnyy-magazin-tokkebi/": {
+  "date": "2026-10-28",
+  "hash": "740acf66aa79"
+ },
+ "/knigi/voshozhdenie-senlina/": {
+  "date": "2026-10-28",
+  "hash": "af644204a332"
+ },
+ "/knigi/voshozhdenie/": {
+  "date": "2026-10-28",
+  "hash": "9ab892f21496"
+ },
+ "/knigi/vse-hroniki-dyuny-antologiya/": {
+  "date": "2026-10-28",
+  "hash": "65c126e17341"
+ },
+ "/knigi/vy-charodey-posobie-po-vyzhivaniyu-v-srednevekovoy-anglii/": {
+  "date": "2026-10-28",
+  "hash": "886d3af6cbd3"
+ },
+ "/knigi/vyzhili-tolko-vlyublennye/": {
+  "date": "2026-10-28",
+  "hash": "c05fb29a2cbe"
+ },
+ "/knigi/ya-hobo-vremena-smerti/": {
+  "date": "2026-10-28",
+  "hash": "13f807fc82c7"
+ },
+ "/knigi/ya-poslannik/": {
+  "date": "2026-10-28",
+  "hash": "a96c7a96a3ef"
+ },
+ "/knigi/yantch/": {
+  "date": "2026-10-28",
+  "hash": "bda5a9b56c1d"
+ },
+ "/knigi/yascher-strasti-iz-buhty-grusti/": {
+  "date": "2026-10-28",
+  "hash": "0a54e98be994"
+ },
+ "/knigi/yudol/": {
+  "date": "2026-10-28",
+  "hash": "15b0a491234d"
+ },
+ "/knigi/zolotoy-shar-trilogiya/": {
+  "date": "2026-10-28",
+  "hash": "559649f86e38"
+ },
+ "/zhanr/alternativnaya-istoriya/": {
+  "date": "2026-10-28",
+  "hash": "4bf1cb539d50"
+ },
+ "/zhanr/antiutopiya/": {
+  "date": "2026-10-28",
+  "hash": "024c1b1d4ea1"
+ },
+ "/zhanr/biologicheskaya-fantastika/": {
+  "date": "2026-10-28",
+  "hash": "8802ab642dd8"
+ },
+ "/zhanr/detektiv/": {
+  "date": "2026-10-28",
+  "hash": "760b14d2b47c"
+ },
+ "/zhanr/epicheskoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "ac632226d053"
+ },
+ "/zhanr/fentezi/": {
+  "date": "2026-10-28",
+  "hash": "080c60882180"
+ },
+ "/zhanr/filosofskaya-fantastika/": {
+  "date": "2026-10-28",
+  "hash": "6408f333a0d9"
+ },
+ "/zhanr/filosofskaya-proza/": {
+  "date": "2026-10-28",
+  "hash": "deb0bf31b357"
+ },
+ "/zhanr/folklornaya-proza/": {
+  "date": "2026-10-28",
+  "hash": "0cb2655d79a4"
+ },
+ "/zhanr/geroicheskoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "2bd0f28ec336"
+ },
+ "/zhanr/gorodskoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "63751a31ae61"
+ },
+ "/zhanr/horror/": {
+  "date": "2026-10-28",
+  "hash": "8d0ddf6ea122"
+ },
+ "/zhanr/intellektualnaya-proza/": {
+  "date": "2026-10-28",
+  "hash": "fff395892a1a"
+ },
+ "/zhanr/istoricheskoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "ef456938c9bb"
+ },
+ "/zhanr/kiberpank/": {
+  "date": "2026-10-28",
+  "hash": "f685e67ed448"
+ },
+ "/zhanr/kosmicheskaya-fantastika/": {
+  "date": "2026-10-28",
+  "hash": "cd59dca1cbc4"
+ },
+ "/zhanr/kosmicheskaya-opera/": {
+  "date": "2026-10-28",
+  "hash": "6140ea3e4b35"
+ },
+ "/zhanr/magicheskiy-realizm/": {
+  "date": "2026-10-28",
+  "hash": "68c4c2882c65"
+ },
+ "/zhanr/misticheskaya-proza/": {
+  "date": "2026-10-28",
+  "hash": "801aa2ca8f7f"
+ },
+ "/zhanr/misticheskiy-triller/": {
+  "date": "2026-10-28",
+  "hash": "d03cc3262d5f"
+ },
+ "/zhanr/mistika/": {
+  "date": "2026-10-28",
+  "hash": "8c6caa14a92e"
+ },
+ "/zhanr/nauchnaya-fantastika/": {
+  "date": "2026-10-28",
+  "hash": "485f09106502"
+ },
+ "/zhanr/politicheskoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "5bc12f8d1db6"
+ },
+ "/zhanr/postapokaliptika/": {
+  "date": "2026-10-28",
+  "hash": "84867e610c61"
+ },
+ "/zhanr/postgumanizm/": {
+  "date": "2026-10-28",
+  "hash": "a40905b21098"
+ },
+ "/zhanr/postmodernizm/": {
+  "date": "2026-10-28",
+  "hash": "bd0f3c5fa1d7"
+ },
+ "/zhanr/psihologicheskaya-proza/": {
+  "date": "2026-10-28",
+  "hash": "2822ac30f419"
+ },
+ "/zhanr/psihologicheskiy-roman/": {
+  "date": "2026-10-28",
+  "hash": "74bc680e0ea2"
+ },
+ "/zhanr/psihologicheskiy-triller/": {
+  "date": "2026-10-28",
+  "hash": "5362072a6e05"
+ },
+ "/zhanr/satira/": {
+  "date": "2026-10-28",
+  "hash": "c79d482f9276"
+ },
+ "/zhanr/shpionskiy-triller/": {
+  "date": "2026-10-28",
+  "hash": "323329227a7e"
+ },
+ "/zhanr/socialnaya-fantastika/": {
+  "date": "2026-10-28",
+  "hash": "fc9d4c7e33c6"
+ },
+ "/zhanr/stimpank/": {
+  "date": "2026-10-28",
+  "hash": "1ed08d050fbf"
+ },
+ "/zhanr/syurrealisticheskoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "3061bdb10bda"
+ },
+ "/zhanr/tehnotriller/": {
+  "date": "2026-10-28",
+  "hash": "eb892ede42d2"
+ },
+ "/zhanr/temnoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "0fdc1bcde38d"
+ },
+ "/zhanr/triller/": {
+  "date": "2026-10-28",
+  "hash": "f66404f34dcc"
+ },
+ "/zhanr/tverdaya-nf/": {
+  "date": "2026-10-28",
+  "hash": "589c8a6dc17a"
+ },
+ "/zhanr/voennaya-fantastika/": {
+  "date": "2026-10-28",
+  "hash": "c007eba4d884"
+ },
+ "/zhanr/voennoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "3c371bafa345"
+ },
+ "/zhanr/young-adult/": {
+  "date": "2026-10-28",
+  "hash": "bb2a3541f2bf"
+ },
+ "/zhanr/yumoristicheskoe-fentezi/": {
+  "date": "2026-10-28",
+  "hash": "94e5c3d264bd"
+ }
+}

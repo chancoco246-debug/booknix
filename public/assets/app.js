@@ -17,7 +17,11 @@ function fmtDate(v){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v||""));return
 function hasEta(b){return !!b.eta&&(b.type==="wait"||b.type==="progress");}
 function etaLine(b){return hasEta(b)?'<p class="eta-line">Выход перевода — примерно <b>'+fmtDate(b.eta)+'</b></p>':'';}
 var PAL=[["#2b4a6b","#0e1a2a"],["#6b2f3a","#1d0c12"],["#3f5b3a","#111c10"],["#7a5a2a","#22170a"],["#4a3b6e","#140f24"],["#2f6466","#0b1d1e"],["#6e4a3a","#1f130d"],["#384a5e","#0d131b"]];
-var ui={q:"",genre:"",hero:0,timer:null,openId:idFromPath()};
+var GEN=window.BOOKNIX.genres||{},SEO=window.BOOKNIX.seo||{};
+var ui={q:(function(){try{return new URLSearchParams(location.search).get("q")||"";}catch(x){return "";}})(),genre:genreFromPath()||"",hero:0,timer:null,openId:idFromPath()};
+function genreFromPath(){var m=/^\/zhanr\/([^\/]+)\/?$/.exec(location.pathname);if(!m)return null;var sl=decodeURIComponent(m[1]);for(var g in GEN){if(GEN[g].slug===sl)return g;}return null;}
+function genreUrl(g){return GEN[g]?"/zhanr/"+GEN[g].slug+"/":"/";}
+function gLink(g){return GEN[g]?'<a href="'+genreUrl(g)+'" data-genre="'+esc(g)+'">'+esc(g)+'</a>':esc(g);}
 function idFromPath(){var m=/^\/knigi\/([^\/]+)\/?$/.exec(location.pathname);return m?decodeURIComponent(m[1]):null;}
 function bookUrl(id){return "/knigi/"+encodeURIComponent(id)+"/";}
 var app=document.getElementById("app");
@@ -63,13 +67,13 @@ function render(){
   if(ui.q||ui.genre){
     body='<section class="row"><div class="row-head"><h2>'+(ui.q?'Поиск: «'+esc(ui.q)+'»':esc(ui.genre))+'</h2><span class="count">'+filtered.length+'</span></div>'+(filtered.length?'<div class="grid">'+filtered.map(card).join("")+'</div>':'<p class="empty">Ничего не нашлось. Попробуйте другое название или автора — или загляните в канал, там книг больше.</p>')+'</section>';
   } else {
-    body=row("new","Новое на Booknix",all.filter(function(b){return b.type!=="wait";}).slice(0,12))+row("translations","Мои переводы",all.filter(function(b){return b.type==="translation";}))+row("wait","Лист ожидания",all.filter(function(b){return b.type==="wait";}).sort(function(a,b){return (a.eta||"9999")<(b.eta||"9999")?-1:1;}))+row("rec","Рекомендации",all.filter(function(b){return b.type==="rec";}))+gl.map(function(g,i){return row("g"+i,esc(g),all.filter(function(b){return b.type!=="wait"&&(b.genres||[]).indexOf(g)>=0;}));}).join("");
+    body=row("new","Новое на Booknix",all.filter(function(b){return b.type!=="wait";}).slice(0,12))+row("translations","Мои переводы",all.filter(function(b){return b.type==="translation";}))+row("wait","Лист ожидания",all.filter(function(b){return b.type==="wait";}).sort(function(a,b){return (a.eta||"9999")<(b.eta||"9999")?-1:1;}))+row("rec","Рекомендации",all.filter(function(b){return b.type==="rec";}))+gl.map(function(g,i){return row("g"+i,gLink(g),all.filter(function(b){return b.type!=="wait"&&(b.genres||[]).indexOf(g)>=0;}));}).join("");
   }
   var searchVal=ui.q;
   var keep={};['.sheet-card'].forEach(function(q){var el=app.querySelector(q);if(el)keep[q]=el.scrollTop;});
   app.innerHTML='<div class="bx-bar"><a class="bx-logo" href="/" data-home="1">BOOK<span>NIX</span></a><nav class="bx-nav"><a href="/#translations" data-anchor="translations">Переводы</a><a href="/#rec" data-anchor="rec">Рекомендации</a><a href="/#wait" data-anchor="wait">Лист ожидания</a><a href="/#about" data-anchor="about">О канале</a></nav><label class="bx-search"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2"/></svg><input id="bx-q" type="search" placeholder="Книга или автор" aria-label="Поиск по книгам" value="'+esc(searchVal)+'"></label><a class="btn btn-amber btn-sm bx-tg" href="'+esc(safeUrl(s.channelUrl))+'" target="_blank" rel="noopener">'+TG+'<span class="lbl">Канал</span></a></div>'
    +'<div id="top"></div>'+(ui.q||ui.genre?'':heroHtml())
-   +'<div class="filters" role="toolbar" aria-label="Жанры"><button class="chip" data-genre="" aria-pressed="'+(!ui.genre)+'">Все жанры</button>'+gVis.map(function(g){return '<button class="chip" data-genre="'+esc(g)+'" aria-pressed="'+(ui.genre===g)+'">'+esc(g)+'<span class="n">'+genres[g]+'</span></button>';}).join("")+(gl.length>GSHOW+1?'<button class="chip more-g" data-gmore="1" aria-expanded="'+(!!ui.gAll)+'">'+(ui.gAll?'Свернуть ▴':'Ещё '+(gl.length-GSHOW)+' ▾')+'</button>':'')+'</div>'
+   +'<div class="filters" role="toolbar" aria-label="Жанры"><a class="chip" href="/" data-genre=""'+(!ui.genre?' aria-current="page"':'')+'>Все жанры</a>'+gVis.map(function(g){return '<a class="chip" href="'+genreUrl(g)+'" data-genre="'+esc(g)+'"'+(ui.genre===g?' aria-current="page"':'')+'>'+esc(g)+'<span class="n">'+genres[g]+'</span></a>';}).join("")+(gl.length>GSHOW+1?'<button class="chip more-g" data-gmore="1" aria-expanded="'+(!!ui.gAll)+'">'+(ui.gAll?'Свернуть ▴':'Ещё '+(gl.length-GSHOW)+' ▾')+'</button>':'')+'</div>'
    +body
    +'<section class="about" id="about"><div><div class="eyebrow">Telegram-канал</div><h2>'+esc(s.channelName)+'</h2><p>'+esc(s.about)+'</p><p>Полные книги лежат на закрытой Книжной полке. Чтобы попасть туда, напишите «Хочу доступ» в комментариях к любому посту — приглашение придёт в личные сообщения.</p></div><a class="btn btn-amber" href="'+esc(safeUrl(s.channelUrl))+'" target="_blank" rel="noopener">'+TG+'Подписаться</a></section>'
    +'<footer><span>Booknix — витрина канала '+esc(s.channelName)+'</span><span>Связь: '+esc(s.contact)+'</span>'+'</footer>'
@@ -81,7 +85,7 @@ function render(){
 function find(id){for(var i=0;i<state.books.length;i++){if(state.books[i].id===id) return state.books[i];}return null;}
 function sheetHtml(){
   var b=find(ui.openId);if(!b) return "";
-  return '<div class="sheet" data-close="1"><div class="sheet-card" role="dialog" aria-modal="true" aria-label="'+esc(b.title)+'"><button class="x" data-close="1" aria-label="Закрыть">×</button><div class="sheet-top"><div>'+cover(b,200)+'</div><div>'+badge(b.type)+'<h2>'+esc(b.title)+'</h2><p class="by">'+esc(b.author)+(b.series?' — '+seriesLabel(b):'')+'</p>'+origLine(b)+'<p class="meta">'+[b.origin].concat(b.genres||[]).filter(Boolean).map(esc).join(' · ')+'</p>'+etaLine(b)+annHtml(b)+(b.note?'<p class="note'+(b.type==="rec"?' rec':'')+'"><b>'+(b.type==="rec"?'Рекомендация':'От переводчика')+'</b>'+esc(b.note)+'</p>':'')+'<a class="btn btn-amber" href="'+esc(link(b))+'" target="_blank" rel="noopener">'+TG+(b.type==="translation"?'Читать перевод в Telegram':(b.type==="progress"||b.type==="wait")?'Следить за переводом':'Найти в Telegram')+'</a></div></div>'+seriesBlock(b)+'<div class="access"><strong>Как получить книгу.</strong> Откройте пост в канале и напишите в комментариях «Хочу доступ» — пришлю приглашение на закрытую Книжную полку, где лежат все файлы.</div></div></div>';
+  return '<div class="sheet" data-close="1"><div class="sheet-card" role="dialog" aria-modal="true" aria-label="'+esc(b.title)+'"><button class="x" data-close="1" aria-label="Закрыть">×</button><div class="sheet-top"><div>'+cover(b,200)+'</div><div>'+badge(b.type)+'<h2>'+esc(b.title)+'</h2><p class="by">'+esc(b.author)+(b.series?' — '+seriesLabel(b):'')+'</p>'+origLine(b)+'<p class="meta">'+[esc(b.origin)].concat((b.genres||[]).map(gLink)).filter(Boolean).join(' · ')+'</p>'+etaLine(b)+annHtml(b)+(b.note?'<p class="note'+(b.type==="rec"?' rec':'')+'"><b>'+(b.type==="rec"?'Рекомендация':'От переводчика')+'</b>'+esc(b.note)+'</p>':'')+'<a class="btn btn-amber" href="'+esc(link(b))+'" target="_blank" rel="noopener">'+TG+(b.type==="translation"?'Читать перевод в Telegram':(b.type==="progress"||b.type==="wait")?'Следить за переводом':'Найти в Telegram')+'</a></div></div>'+seriesBlock(b)+'<div class="access"><strong>Как получить книгу.</strong> Откройте пост в канале и напишите в комментариях «Хочу доступ» — пришлю приглашение на закрытую Книжную полку, где лежат все файлы.</div></div></div>';
 }
 
 /* ---------- events ---------- */
@@ -89,7 +93,7 @@ document.addEventListener("click",function(e){
   var t=e.target.closest("[data-open],[data-close],[data-scroll],[data-genre],[data-hero],[data-more],[data-gmore],[data-home],[data-anchor]");
   if(!t) return;
   var ds=t.dataset;
-  if((ds.open!==undefined||ds.home!==undefined||ds.anchor!==undefined)&&(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button>0))return;
+  if((ds.open!==undefined||ds.home!==undefined||ds.anchor!==undefined||ds.genre!==undefined)&&(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button>0))return;
   if(ds.close!==undefined){if(e.target===t||t.classList.contains("x")){closeSheet();}return;}
   if(ds.home!==undefined){e.preventDefault();ui.q="";ui.genre="";ui.openId=null;go("/");render();window.scrollTo(0,0);return;}
   if(ds.anchor!==undefined){e.preventDefault();var wasFiltered=ui.q||ui.genre||ui.openId;ui.q="";ui.genre="";ui.openId=null;go("/");if(wasFiltered)render();var el=document.getElementById(ds.anchor);if(el)el.scrollIntoView({behavior:"smooth"});return;}
@@ -97,24 +101,24 @@ document.addEventListener("click",function(e){
   if(ds.more!==undefined){ui.annOpen=ui.annOpen===ui.openId?null:ui.openId;render();return;}
       if(ds.open!==undefined){e.preventDefault();openBook(ds.open);return;}
   if(ds.scroll!==undefined){var sh=t.closest(".row").querySelector(".shelf");sh.scrollBy({left:(+ds.scroll)*sh.clientWidth*.85,behavior:"smooth"});return;}
-  if(ds.genre!==undefined){ui.genre=ds.genre;render();return;}
+  if(ds.genre!==undefined){e.preventDefault();ui.genre=ds.genre;ui.q="";ui.openId=null;go(ds.genre?genreUrl(ds.genre):"/");render();window.scrollTo(0,0);return;}
   if(ds.hero!==undefined){ui.hero=+ds.hero;stopRotate();render();return;}
 });
 document.addEventListener("input",function(e){
   if(e.target.id==="bx-q"){ui.q=e.target.value.trim();ui.focusSearch=true;render();}
 });
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ui.openId)closeSheet();});
-var HOME_TITLE="Booknix — фантастика и фэнтези в переводах";
-function setTitle(){var b=ui.openId&&find(ui.openId);document.title=b?b.title+" — "+b.author+" | Booknix":HOME_TITLE;}
+var HOME_TITLE=window.BOOKNIX.homeTitle||"Booknix";
+function setTitle(){var b=ui.openId&&find(ui.openId);document.title=b?(SEO[b.id]||b.title+" — "+b.author+" | Booknix"):(ui.genre&&GEN[ui.genre])?GEN[ui.genre].title:HOME_TITLE;}
 function go(path){if(location.pathname!==path)history.pushState(null,"",path);setTitle();}
 function openBook(id){if(!find(id))return;ui.resetSheet=!!ui.openId;ui.openId=id;ui.annOpen=null;go(bookUrl(id));render();}
-function closeSheet(){ui.openId=null;go("/");render();}
-window.addEventListener("popstate",function(){ui.openId=idFromPath();ui.annOpen=null;setTitle();render();});
+function closeSheet(){ui.openId=null;go(ui.genre?genreUrl(ui.genre):"/");render();}
+window.addEventListener("popstate",function(){ui.openId=idFromPath();if(!ui.openId)ui.genre=genreFromPath()||"";ui.annOpen=null;setTitle();render();});
 
 function stopRotate(){if(ui.timer){clearInterval(ui.timer);ui.timer=null;}}
 var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if(!reduce){ui.timer=setInterval(function(){if(ui.openId||ui.q||ui.genre||document.hidden) return;var ae=document.activeElement;if(ae&&ae.id==="bx-q")return;ui.hero++;var h=document.querySelector(".hero");if(h){var tmp=document.createElement("div");tmp.innerHTML=heroHtml();h.replaceWith(tmp.firstChild);}},9000);}
 
 if(ui.openId&&!find(ui.openId))ui.openId=null;
-render();
+setTitle();render();
 })();
