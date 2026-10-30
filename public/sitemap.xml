@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 <url><loc>https://booknix.net/</loc><lastmod>2026-10-30</lastmod></url>
+<url><loc>https://booknix.net/knigi/ritual/</loc><lastmod>2026-10-30</lastmod><image:image><image:loc>https://booknix.net/og/ritual.jpg</image:loc><image:title>Обложка книги «Ритуал» — Адам Нэвилл</image:title></image:image></url>
 <url><loc>https://booknix.net/knigi/zameshatelstvo/</loc><lastmod>2026-10-30</lastmod><image:image><image:loc>https://booknix.net/og/zameshatelstvo.jpg</image:loc><image:title>Обложка книги «Замешательство» — Ричард Пауэрс</image:title></image:image></url>
 <url><loc>https://booknix.net/knigi/rayskie-psy/</loc><lastmod>2026-10-30</lastmod><image:image><image:loc>https://booknix.net/og/rayskie-psy.jpg</image:loc><image:title>Обложка книги «Райские Псы» — Абель Поссе</image:title></image:image></url>
 <url><loc>https://booknix.net/knigi/korol/</loc><lastmod>2026-10-30</lastmod><image:image><image:loc>https://booknix.net/og/korol.jpg</image:loc><image:title>Обложка книги «Король» — Пьер Певель</image:title></image:image></url>
@@ -103,6 +104,8 @@
 <url><loc>https://booknix.net/knigi/spyaschie-krasavicy/</loc><lastmod>2026-10-30</lastmod><image:image><image:loc>https://booknix.net/og/spyaschie-krasavicy.jpg</image:loc><image:title>Обложка книги «Спящие Красавицы» — Стивен Кинг, Оуэн Кинг</image:title></image:image></url>
 <url><loc>https://booknix.net/knigi/reki-londona/</loc><lastmod>2026-10-30</lastmod><image:image><image:loc>https://booknix.net/og/reki-londona.jpg</image:loc><image:title>Обложка книги «Реки Лондона» — Бен Ааронович</image:title></image:image></url>
 <url><loc>https://booknix.net/knigi/dom-keko/</loc><lastmod>2026-10-30</lastmod><image:image><image:loc>https://booknix.net/og/dom-keko.jpg</image:loc><image:title>Обложка книги «Дом Кёко» — Юкио Мисима</image:title></image:image></url>
+<url><loc>https://booknix.net/zhanr/horror/</loc><lastmod>2026-10-30</lastmod></url>
+<url><loc>https://booknix.net/zhanr/psihologicheskiy-triller/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/sovremennaya-proza/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/psihologicheskiy-roman/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/nauchnaya-fantastika/</loc><lastmod>2026-10-30</lastmod></url>
@@ -130,7 +133,6 @@
 <url><loc>https://booknix.net/zhanr/misticheskaya-proza/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/yumoristicheskoe-fentezi/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/triller/</loc><lastmod>2026-10-30</lastmod></url>
-<url><loc>https://booknix.net/zhanr/horror/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/kosmicheskaya-fantastika/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/biologicheskaya-fantastika/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/mistika/</loc><lastmod>2026-10-30</lastmod></url>
@@ -143,7 +145,6 @@
 <url><loc>https://booknix.net/zhanr/alternativnaya-istoriya/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/filosofskaya-proza/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/folklornaya-proza/</loc><lastmod>2026-10-30</lastmod></url>
-<url><loc>https://booknix.net/zhanr/psihologicheskiy-triller/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/shpionskiy-triller/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://booknix.net/zhanr/misticheskiy-triller/</loc><lastmod>2026-10-30</lastmod></url>
 </urlset>
