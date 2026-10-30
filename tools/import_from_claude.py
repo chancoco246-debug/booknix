@@ -72,7 +72,11 @@ def main(path: str) -> None:
 
     books.sort(key=lambda b: -(b.get("added") or 0))
     (DATA / "books.json").write_text(json.dumps(books, ensure_ascii=False, indent=1), encoding="utf-8")
-    (DATA / "settings.json").write_text(json.dumps(state["settings"], ensure_ascii=False, indent=1), encoding="utf-8")
+    # настройки, которых нет в версии на claude.ai (например, gaId), сохраняем
+    sf = DATA / "settings.json"
+    settings = json.loads(sf.read_text(encoding="utf-8")) if sf.exists() else {}
+    settings.update(state["settings"])
+    sf.write_text(json.dumps(settings, ensure_ascii=False, indent=1), encoding="utf-8")
     size = sum(f.stat().st_size for f in COVERS.glob("*.webp"))
     print(f"Книг: {len(books)}, обложек: {len(keep)}, вес обложек: {size/1024/1024:.1f} МБ")
 

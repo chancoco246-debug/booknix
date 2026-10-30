@@ -76,7 +76,7 @@ function render(){
    +'<div class="filters" role="toolbar" aria-label="Жанры"><a class="chip" href="/" data-genre=""'+(!ui.genre?' aria-current="page"':'')+'>Все жанры</a>'+gVis.map(function(g){return '<a class="chip" href="'+genreUrl(g)+'" data-genre="'+esc(g)+'"'+(ui.genre===g?' aria-current="page"':'')+'>'+esc(g)+'<span class="n">'+genres[g]+'</span></a>';}).join("")+(gl.length>GSHOW+1?'<button class="chip more-g" data-gmore="1" aria-expanded="'+(!!ui.gAll)+'">'+(ui.gAll?'Свернуть ▴':'Ещё '+(gl.length-GSHOW)+' ▾')+'</button>':'')+'</div>'
    +body
    +'<section class="about" id="about"><div><div class="eyebrow">Telegram-канал</div><h2>'+esc(s.channelName)+'</h2><p>'+esc(s.about)+'</p><p>Полные книги лежат на закрытой Книжной полке. Чтобы попасть туда, напишите «Хочу доступ» в комментариях к любому посту — приглашение придёт в личные сообщения.</p></div><a class="btn btn-amber" href="'+esc(safeUrl(s.channelUrl))+'" target="_blank" rel="noopener">'+TG+'Подписаться</a></section>'
-   +'<footer><span>Booknix — витрина канала '+esc(s.channelName)+'</span><span>Связь: '+esc(s.contact)+'</span>'+'</footer>'
+   +'<footer><span>Booknix — витрина канала '+esc(s.channelName)+'</span><span>Связь: '+esc(s.contact)+'</span><button class="cookie-link" data-cookies="1">Настройки cookie</button></footer>'
    +(ui.openId?sheetHtml():'');
   if(ui.resetSheet){delete keep['.sheet-card'];ui.resetSheet=false;}Object.keys(keep).forEach(function(q){var el=app.querySelector(q);if(el)el.scrollTop=keep[q];});
   if(document.activeElement===null||ui.focusSearch){var i=document.getElementById("bx-q");if(ui.focusSearch&&i){i.focus();i.setSelectionRange(i.value.length,i.value.length);}}
@@ -110,7 +110,7 @@ document.addEventListener("input",function(e){
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ui.openId)closeSheet();});
 var HOME_TITLE=window.BOOKNIX.homeTitle||"Booknix";
 function setTitle(){var b=ui.openId&&find(ui.openId);document.title=b?(SEO[b.id]||b.title+" — "+b.author+" | Booknix"):(ui.genre&&GEN[ui.genre])?GEN[ui.genre].title:HOME_TITLE;}
-function go(path){if(location.pathname!==path)history.pushState(null,"",path);setTitle();}
+function go(path){setTitle();if(location.pathname!==path)history.pushState(null,"",path);}
 function openBook(id){if(!find(id))return;ui.resetSheet=!!ui.openId;ui.openId=id;ui.annOpen=null;go(bookUrl(id));render();}
 function closeSheet(){ui.openId=null;go(ui.genre?genreUrl(ui.genre):"/");render();}
 window.addEventListener("popstate",function(){ui.openId=idFromPath();if(!ui.openId)ui.genre=genreFromPath()||"";ui.annOpen=null;setTitle();render();});

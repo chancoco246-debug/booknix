@@ -120,6 +120,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 @media (max-width:700px){.about{grid-template-columns:1fr}}
 footer{padding:28px var(--gutter) 40px;color:var(--mute);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 footer .admin-link{margin-left:auto}
+.cookie-link{margin-left:auto;background:none;border:0;padding:0;color:var(--mute);font-size:13px;text-decoration:underline;text-underline-offset:3px}.cookie-link:hover{color:var(--paper)}
+.bx-cookie{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;max-width:520px;margin:0 auto;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 18px 40px rgba(0,0,0,.55);font-size:14px;color:var(--mute);display:grid;gap:12px}
+.bx-cookie b{color:var(--paper);font-weight:600}.bx-cookie .acts{display:flex;gap:8px;flex-wrap:wrap}
 
 /* admin */
 .adm{position:fixed;inset:0;z-index:50;background:rgba(4,6,10,.78);display:flex;justify-content:flex-end}

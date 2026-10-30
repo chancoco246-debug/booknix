@@ -340,7 +340,9 @@ def main():
     data_js = "window.BOOKNIX=" + json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + ";"
     data_url = asset("books.js", data_js)
     app_url = asset("app.js", (ROOT / "src/app.js").read_text(encoding="utf-8"))
-    scripts = f'<script src="{data_url}" defer></script>\n<script src="{app_url}" defer></script>'
+    consent_url = asset("consent.js", (ROOT / "src/consent.js").read_text(encoding="utf-8"))
+    scripts = (f'<script src="{data_url}" defer></script>\n<script src="{app_url}" defer></script>\n'
+               f'<script src="{consent_url}" defer></script>')
 
     by_series = {}
     for b in books:
