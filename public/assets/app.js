@@ -110,6 +110,7 @@ document.addEventListener("click",function(e){
   r.setAttribute("data-theme",t);try{localStorage.setItem("bx-theme",t);}catch(x){}
   var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?"#f5f0e6":"#0b0f15");
 });
+(function(){if(!window.matchMedia)return;var mq=matchMedia("(prefers-color-scheme: light)");function f(){var st=null;try{st=localStorage.getItem("bx-theme");}catch(x){}if(st==="light"||st==="dark")return;var t=mq.matches?"light":"dark";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?"#f5f0e6":"#0b0f15");}if(mq.addEventListener)mq.addEventListener("change",f);else if(mq.addListener)mq.addListener(f);})();
 document.addEventListener("input",function(e){
   if(e.target.id==="bx-q"){ui.q=e.target.value.trim();ui.focusSearch=true;render();}
 });

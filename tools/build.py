@@ -46,7 +46,7 @@ RESET = (":root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);"
 
 e = lambda s: html.escape(str(s or ""), quote=True)
 STYLE_URL = ""
-THEME_JS = '<script>try{if(localStorage.getItem("bx-theme")==="light"){document.documentElement.setAttribute("data-theme","light");document.querySelector(\'meta[name="theme-color"]\').setAttribute("content","#f5f0e6");}}catch(x){}</script>'  # тема до отрисовки, без мигания
+THEME_JS = '<script>(function(){var t=null;try{t=localStorage.getItem("bx-theme")}catch(x){}if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",t);if(t==="light")document.querySelector(\'meta[name="theme-color"]\').setAttribute("content","#f5f0e6");})()</script>'  # тема до отрисовки: выбор посетителя или настройка системы
 GA_HEAD = ""
 
 
