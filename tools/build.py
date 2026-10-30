@@ -46,6 +46,20 @@ RESET = (":root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);"
 
 e = lambda s: html.escape(str(s or ""), quote=True)
 STYLE_URL = ""
+GA_HEAD = ""
+
+
+def ga_head(gid):
+    """Тег Google Analytics в режиме Consent Mode: по умолчанию без cookie."""
+    if not gid:
+        return ""
+    gid = e(gid)
+    return (f'<script async src="https://www.googletagmanager.com/gtag/js?id={gid}"></script>\n'
+            "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
+            "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',"
+            "analytics_storage:'denied'});"
+            "try{if(localStorage.getItem('bx-cookies')==='yes')gtag('consent','update',{analytics_storage:'granted'});}catch(x){}"
+            f"gtag('js',new Date());gtag('config','{gid}');</script>\n")
 
 
 def slugify(t):
@@ -174,7 +188,7 @@ def page(*, title, desc, canonical, og_img, og_type, jsonld, body, scripts, robo
 <meta name="twitter:title" content="{e(title)}">
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{e(og_img)}">
-{extra_head}{FONTS}
+{extra_head}{GA_HEAD}{FONTS}
 <style>{RESET}</style>
 <link rel="stylesheet" href="{STYLE_URL}" id="bx-style">
 {lds}</head>
@@ -323,7 +337,7 @@ def item_list(name, items):
 # ---------- сборка ----------
 
 def main():
-    global STYLE_URL
+    global STYLE_URL, GA_HEAD
     books = json.loads((ROOT / "data/books.json").read_text(encoding="utf-8"))
     settings = json.loads((ROOT / "data/settings.json").read_text(encoding="utf-8"))
     books.sort(key=lambda b: -(b.get("added") or 0))
@@ -333,6 +347,7 @@ def main():
     gslug = {g: slugify(g) for g, n in counts.items() if n >= GENRE_MIN}
     gtitles = {g: genre_title(g, counts[g]) for g in gslug}
 
+    GA_HEAD = ga_head(settings.get("gaId"))
     STYLE_URL = asset("style.css", (ROOT / "src/style.css").read_text(encoding="utf-8"))
     payload = {"settings": settings, "books": books, "homeTitle": HOME_TITLE,
                "seo": {b["id"]: seo_title(b) for b in books},

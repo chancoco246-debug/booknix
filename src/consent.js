@@ -1,19 +1,11 @@
-/* Google Analytics только после согласия посетителя (правила ЕС). */
+/* Плашка согласия на cookie. Сам тег Google стоит в <head> в режиме Consent Mode:
+   до согласия — без cookie, после «Разрешить» — обычная аналитика. */
 (function(){
 "use strict";
-var D=window.BOOKNIX||{},ID=(D.settings||{}).gaId,KEY="bx-cookies";
-if(!ID)return;
+var KEY="bx-cookies";
+if(typeof window.gtag!=="function")return;
 function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
 function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
-var loaded=false;
-function loadGA(){
-  if(loaded)return;loaded=true;
-  window.dataLayer=window.dataLayer||[];
-  window.gtag=function(){dataLayer.push(arguments);};
-  gtag("js",new Date());gtag("config",ID,{anonymize_ip:true});
-  var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+encodeURIComponent(ID);
-  document.head.appendChild(s);
-}
 function hide(){var b=document.querySelector(".bx-cookie");if(b)b.remove();}
 function show(){
   hide();var b=document.createElement("div");b.className="bx-cookie";b.setAttribute("role","dialog");b.setAttribute("aria-label","Cookie");
@@ -25,9 +17,7 @@ document.addEventListener("click",function(e){
   var t=e.target.closest("[data-ck],[data-cookies]");if(!t)return;
   if(t.dataset.cookies!==undefined){show();return;}
   var v=t.dataset.ck;set(v);hide();
-  if(v==="yes")loadGA();
-  else if(loaded){location.reload();}
+  gtag("consent","update",{analytics_storage:v==="yes"?"granted":"denied"});
 });
-var c=get();
-if(c==="yes")loadGA();else if(c!=="no")show();
+var c=get();if(c!=="yes"&&c!=="no")show();
 })();
