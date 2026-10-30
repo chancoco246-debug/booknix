@@ -46,6 +46,7 @@ RESET = (":root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);"
 
 e = lambda s: html.escape(str(s or ""), quote=True)
 STYLE_URL = ""
+THEME_JS = '<script>try{if(localStorage.getItem("bx-theme")==="light"){document.documentElement.setAttribute("data-theme","light");document.querySelector(\'meta[name="theme-color"]\').setAttribute("content","#f5f0e6");}}catch(x){}</script>'  # тема до отрисовки, без мигания
 GA_HEAD = ""
 
 
@@ -175,6 +176,7 @@ def page(*, title, desc, canonical, og_img, og_type, jsonld, body, scripts, robo
 <meta name="description" content="{e(desc)}">
 <meta name="robots" content="{robots},max-image-preview:large,max-snippet:-1">
 {canon}<meta name="theme-color" content="#0b0f15">
+{THEME_JS}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:site_name" content="{SITE_NAME}">
 <meta property="og:locale" content="ru_RU">

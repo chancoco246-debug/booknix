@@ -71,7 +71,7 @@ function render(){
   }
   var searchVal=ui.q;
   var keep={};['.sheet-card'].forEach(function(q){var el=app.querySelector(q);if(el)keep[q]=el.scrollTop;});
-  app.innerHTML='<div class="bx-bar"><a class="bx-logo" href="/" data-home="1">BOOK<span>NIX</span></a><nav class="bx-nav"><a href="/#translations" data-anchor="translations">Переводы</a><a href="/#rec" data-anchor="rec">Рекомендации</a><a href="/#wait" data-anchor="wait">Лист ожидания</a><a href="/#about" data-anchor="about">О канале</a></nav><label class="bx-search"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2"/></svg><input id="bx-q" type="search" placeholder="Книга или автор" aria-label="Поиск по книгам" value="'+esc(searchVal)+'"></label><a class="btn btn-amber btn-sm bx-tg" href="'+esc(safeUrl(s.channelUrl))+'" target="_blank" rel="noopener">'+TG+'<span class="lbl">Канал</span></a></div>'
+  app.innerHTML='<div class="bx-bar"><a class="bx-logo" href="/" data-home="1">BOOK<span>NIX</span></a><nav class="bx-nav"><a href="/#translations" data-anchor="translations">Переводы</a><a href="/#rec" data-anchor="rec">Рекомендации</a><a href="/#wait" data-anchor="wait">Лист ожидания</a><a href="/#about" data-anchor="about">О канале</a></nav><label class="bx-search"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2"/></svg><input id="bx-q" type="search" placeholder="Книга или автор" aria-label="Поиск по книгам" value="'+esc(searchVal)+'"></label><button class="bx-theme" data-theme-toggle="1" aria-label="Переключить светлую и тёмную тему" title="Светлая / тёмная тема"><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a.6.6 0 0 0-.8-.7A9.7 9.7 0 1 0 21.2 15.4a.6.6 0 0 0-.7-.8z"/></svg><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button><a class="btn btn-amber btn-sm bx-tg" href="'+esc(safeUrl(s.channelUrl))+'" target="_blank" rel="noopener">'+TG+'<span class="lbl">Канал</span></a></div>'
    +'<div id="top"></div>'+(ui.q||ui.genre?'':heroHtml())
    +'<div class="filters" role="toolbar" aria-label="Жанры"><a class="chip" href="/" data-genre=""'+(!ui.genre?' aria-current="page"':'')+'>Все жанры</a>'+gVis.map(function(g){return '<a class="chip" href="'+genreUrl(g)+'" data-genre="'+esc(g)+'"'+(ui.genre===g?' aria-current="page"':'')+'>'+esc(g)+'<span class="n">'+genres[g]+'</span></a>';}).join("")+(gl.length>GSHOW+1?'<button class="chip more-g" data-gmore="1" aria-expanded="'+(!!ui.gAll)+'">'+(ui.gAll?'Свернуть ▴':'Ещё '+(gl.length-GSHOW)+' ▾')+'</button>':'')+'</div>'
    +body
@@ -103,6 +103,12 @@ document.addEventListener("click",function(e){
   if(ds.scroll!==undefined){var sh=t.closest(".row").querySelector(".shelf");sh.scrollBy({left:(+ds.scroll)*sh.clientWidth*.85,behavior:"smooth"});return;}
   if(ds.genre!==undefined){e.preventDefault();ui.genre=ds.genre;ui.q="";ui.openId=null;go(ds.genre?genreUrl(ds.genre):"/");render();window.scrollTo(0,0);return;}
   if(ds.hero!==undefined){ui.hero=+ds.hero;stopRotate();render();return;}
+});
+document.addEventListener("click",function(e){
+  if(!e.target.closest("[data-theme-toggle]"))return;
+  var r=document.documentElement,t=r.getAttribute("data-theme")==="light"?"dark":"light";
+  r.setAttribute("data-theme",t);try{localStorage.setItem("bx-theme",t);}catch(x){}
+  var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?"#f5f0e6":"#0b0f15");
 });
 document.addEventListener("input",function(e){
   if(e.target.id==="bx-q"){ui.q=e.target.value.trim();ui.focusSearch=true;render();}
