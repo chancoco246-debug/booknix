@@ -17,6 +17,8 @@ from pathlib import Path
 
 from PIL import Image
 
+import og
+
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 BASE = "https://booknix.net"
@@ -135,16 +137,44 @@ def asset(name, content):
     return f"/assets/{name}?v={v}"
 
 
+OG_USED = set()
+OG_VERSION = "2"  # поменять, чтобы перерисовать все превью
+
+
+def _og_name(prefix, parts):
+    h = hashlib.sha1(("|".join(map(str, parts)) + OG_VERSION
+                      + (ROOT / "tools/og.py").read_text(encoding="utf-8")).encode()).hexdigest()[:8]
+    name = f"{prefix}-{h}.jpg"
+    OG_USED.add(name)
+    (PUB / "og").mkdir(exist_ok=True)
+    return PUB / "og" / name, f"{BASE}/og/{name}"
+
+
+def _file_hash(path):
+    return hashlib.sha1(path.read_bytes()).hexdigest()[:10] if path.exists() else ""
+
+
 def og_image(b):
-    """JPEG-превью для соцсетей (не все мессенджеры понимают WebP)."""
+    """Превью ссылки на книгу 1200×630: обложка целиком + название и автор."""
     if not b.get("cover"):
-        return f"{BASE}/og-default.jpg"
+        return og_collage("home", [], "")
     src = PUB / b["cover"].lstrip("/")
-    out = PUB / "og" / f"{b['id']}.jpg"
-    out.parent.mkdir(exist_ok=True)
-    if src.exists() and (not out.exists() or out.stat().st_mtime < src.stat().st_mtime):
-        Image.open(src).convert("RGB").save(out, "JPEG", quality=80, optimize=True)
-    return f"{BASE}/og/{b['id']}.jpg"
+    out, url = _og_name(b["id"], [_file_hash(src), b["title"], b["author"], b["type"], b.get("origTitle"), b.get("year")])
+    if not out.exists():
+        og.book_card(b, src, out)
+    return url
+
+
+def og_collage(prefix, books, tagline):
+    """Галерея обложек для главной и страниц жанров."""
+    covers = [PUB / b["cover"].lstrip("/") for b in books if b.get("cover")]
+    covers = [c for c in covers if c.exists()][:14]
+    if not covers:
+        return f"{BASE}/og-default.jpg"
+    out, url = _og_name(prefix, [tagline] + [_file_hash(c) for c in covers])
+    if not out.exists():
+        og.home_collage(covers, out, tagline)
+    return url
 
 
 def write_dir_page(path, content):
@@ -163,7 +193,7 @@ def prune(dirpath, keep):
 
 
 def page(*, title, desc, canonical, og_img, og_type, jsonld, body, scripts, robots="index,follow",
-         og_size=(360, 540), extra_head=""):
+         og_size=(1200, 630), extra_head=""):
     lds = "".join('<script type="application/ld+json">' + json.dumps(j, ensure_ascii=False).replace("</", "<\\/")
                   + "</script>\n" for j in (jsonld if isinstance(jsonld, list) else [jsonld]))
     canon = f'<link rel="canonical" href="{e(canonical)}">\n<meta property="og:url" content="{e(canonical)}">\n' if canonical else ""
@@ -186,7 +216,7 @@ def page(*, title, desc, canonical, og_img, og_type, jsonld, body, scripts, robo
 <meta property="og:image" content="{e(og_img)}">
 <meta property="og:image:width" content="{og_size[0]}">
 <meta property="og:image:height" content="{og_size[1]}">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(title)}">
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{e(og_img)}">
@@ -371,6 +401,10 @@ def main():
 
     # главная
     first_cover = next((b for b in books if b.get("featured") and b.get("cover")), books[0])
+    gallery = [b for b in books if b.get("featured")] + [b for b in books if b["type"] == "translation"] + books
+    seen = set()
+    gallery = [b for b in gallery if not (b["id"] in seen or seen.add(b["id"]))]
+    home_og = og_collage("home", gallery, "Фантастика и фэнтези: переводы и рекомендации")
     home_ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": BASE + "/",
                 "inLanguage": "ru", "description": HOME_DESC,
                 "potentialAction": {"@type": "SearchAction", "target": BASE + "/?q={search_term_string}",
@@ -378,7 +412,7 @@ def main():
                {"@context": "https://schema.org", "@type": "Organization", "name": SITE_NAME, "url": BASE + "/",
                 "logo": BASE + "/favicon.svg", "sameAs": [settings["channelUrl"]]},
                item_list("Мои переводы", [b for b in books if b["type"] == "translation"])]
-    pages["/"] = page(title=HOME_TITLE, desc=HOME_DESC, canonical=BASE + "/", og_img=og_image(first_cover),
+    pages["/"] = page(title=HOME_TITLE, desc=HOME_DESC, canonical=BASE + "/", og_img=home_og,
                       og_type="website", jsonld=home_ld, body=home_static(books, settings, gslug, counts),
                       scripts=scripts)
     (PUB / "index.html").write_text(pages["/"], encoding="utf-8")
@@ -391,7 +425,7 @@ def main():
         path = f"/knigi/{b['id']}/"
         url = BASE + path
         img = og_image(b)
-        images[path] = (img, f"Обложка книги «{b['title']}» — {b['author']}")
+        images[path] = (BASE + b["cover"] if b.get("cover") else img, f"Обложка книги «{b['title']}» — {b['author']}")
         ld = [book_jsonld(b, url, img, settings),
               crumbs((SITE_NAME, BASE + "/"), (SHELVES[b["type"]], BASE + "/#" + {"translation": "translations",
                                                                                    "wait": "wait", "rec": "rec"}[b["type"]]),
@@ -402,9 +436,6 @@ def main():
                            jsonld=ld, body=book_static(b, settings, by_series, books, gslug), scripts=scripts,
                            extra_head=extra)
         write_dir_page(PUB / "knigi" / b["id"], pages[path])
-    for f in (PUB / "og").glob("*.jpg"):
-        if f.stem not in ids:
-            f.unlink()
 
     # жанры
     prune(PUB / "zhanr", set(gslug.values()))
@@ -419,7 +450,7 @@ def main():
         ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": f"{g}: книги",
                "url": BASE + path, "inLanguage": "ru", "description": desc},
               item_list(g, items), crumbs((SITE_NAME, BASE + "/"), (g, BASE + path))]
-        pages[path] = page(title=gtitles[g], desc=desc, canonical=BASE + path, og_img=og_image(cover_book),
+        pages[path] = page(title=gtitles[g], desc=desc, canonical=BASE + path, og_img=og_collage("zhanr-" + sl, items, f"{g}: {len(items)} {plural(len(items), 'книга', 'книги', 'книг')}"),
                            og_type="website", jsonld=ld, body=genre_static(g, items, gslug, counts), scripts=scripts)
         write_dir_page(PUB / "zhanr" / sl, pages[path])
 
@@ -428,9 +459,14 @@ def main():
           '<p>Возможно, книга переехала или ссылка набрана с ошибкой.</p>'
           '<p><a href="/">Вернуться на главную Booknix</a></p></main>')
     (PUB / "404.html").write_text(page(title="Страница не найдена | Booknix", desc="Страница не найдена",
-                                       canonical="", og_img=og_image(first_cover), og_type="website",
+                                       canonical="", og_img=home_og, og_type="website",
                                        jsonld={"@context": "https://schema.org", "@type": "WebPage"},
                                        body=nf, scripts="", robots="noindex"), encoding="utf-8")
+
+    # старые превью удаляем
+    for f in (PUB / "og").glob("*.jpg"):
+        if f.name not in OG_USED:
+            f.unlink()
 
     # sitemap: дата меняется только у страниц, которые реально изменились
     lm_file = ROOT / "data" / "lastmod.json"
