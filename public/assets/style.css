@@ -198,3 +198,15 @@ footer .admin-link{margin-left:auto}
 :root[data-theme="light"] .hero-bg{opacity:.35}
 :root[data-theme="light"] .badge.wait{background:#cdbcff}
 .card,.si{text-decoration:none;color:inherit}
+/* Узкие экраны и крупный шрифт в настройках телефона: колонки не шире экрана, длинные слова переносятся */
+.hero-in>*,.sheet-top>*,.about>*{min-width:0}
+.hero h1,.sheet h2,.about h2{overflow-wrap:break-word;hyphens:auto}
+.hero .orig,.sheet .orig,.sheet .meta,.hero .by,.sheet .by{overflow-wrap:anywhere}
+.dots{flex-wrap:wrap}
+@media (max-width:640px){.hero-in{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){.sheet-top{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.about{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.hero-actions .btn,.sheet .btn,.about .btn{white-space:normal;text-align:left}.bx-search{flex-basis:auto}}
+.row-head h2{min-width:0;overflow-wrap:break-word}
+@media (max-width:420px){.row-head .nav{display:none}.sheet-top{padding:18px}.access,.series{margin-left:18px;margin-right:18px}}
+@media (max-width:300px){.bx-bar{gap:6px;padding-left:12px;padding-right:12px}.bx-logo{font-size:16px}.bx-search{padding:6px 10px}.bx-theme{width:34px;height:34px}.bx-tg{padding:7px 10px}}
