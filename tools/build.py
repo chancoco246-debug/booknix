@@ -371,6 +371,11 @@ def item_list(name, items):
 def main():
     global STYLE_URL, GA_HEAD
     books = json.loads((ROOT / "data/books.json").read_text(encoding="utf-8"))
+    of = ROOT / "data/order.json"
+    order = json.loads(of.read_text(encoding="utf-8")) if of.exists() else {}
+    for b in books:  # порядок «по моменту выхода перевода», см. import_from_claude.py
+        if b["id"] in order:
+            b["added"] = order[b["id"]]
     settings = json.loads((ROOT / "data/settings.json").read_text(encoding="utf-8"))
     books.sort(key=lambda b: -(b.get("added") or 0))
     pages = {}  # url -> (html, image) — для sitemap

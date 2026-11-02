@@ -49,6 +49,8 @@ def main(path: str) -> None:
     if not m:
         sys.exit("В файле не найдены данные книг (booknix-data).")
     state = json.loads(m.group(1))
+    bf = DATA / "books.json"
+    old_types = {b["id"]: b.get("type") for b in json.loads(bf.read_text(encoding="utf-8"))} if bf.exists() else {}
     COVERS.mkdir(parents=True, exist_ok=True)
     DATA.mkdir(parents=True, exist_ok=True)
 
@@ -69,6 +71,20 @@ def main(path: str) -> None:
     for f in COVERS.glob("*.webp"):
         if f.name not in keep:
             f.unlink()
+
+    # Книга перешла из «Листа ожидания» в «Мои переводы» — поднимаем её наверх «Нового» и «Моих переводов»,
+    # как будто она добавлена сейчас. Порядок хранится в data/order.json и применяется при сборке.
+    of = DATA / "order.json"
+    order = json.loads(of.read_text(encoding="utf-8")) if of.exists() else {}
+    top = max([b.get("added") or 0 for b in books] + list(order.values()) + [0])
+    for b in books:
+        if b.get("type") == "translation" and old_types.get(b["id"]) in ("wait", "progress"):
+            top += 0.5
+            order[b["id"]] = top
+            print(f"Перевод готов, книга поднята наверх: {b['title']}")
+    ids = {b["id"] for b in books}
+    order = {k: v for k, v in order.items() if k in ids}
+    of.write_text(json.dumps(order, ensure_ascii=False, indent=1), encoding="utf-8")
 
     books.sort(key=lambda b: -(b.get("added") or 0))
     (DATA / "books.json").write_text(json.dumps(books, ensure_ascii=False, indent=1), encoding="utf-8")
