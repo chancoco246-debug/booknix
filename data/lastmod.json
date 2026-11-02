@@ -1,7 +1,7 @@
 {
  "/": {
-  "date": "2026-11-01",
-  "hash": "5af2ae52f667"
+  "date": "2026-11-02",
+  "hash": "511cce022f14"
  },
  "/knigi/36-ulic/": {
   "date": "2026-11-01",
@@ -16,24 +16,24 @@
   "hash": "521685b9effe"
  },
  "/knigi/agla-abraksas/": {
-  "date": "2026-11-01",
-  "hash": "5292e8738c21"
+  "date": "2026-11-02",
+  "hash": "8c9fd0385fa5"
  },
  "/knigi/agla-alef/": {
-  "date": "2026-11-01",
-  "hash": "eb8450004329"
+  "date": "2026-11-02",
+  "hash": "da47a049e6ae"
  },
  "/knigi/agla-avrora/": {
-  "date": "2026-11-01",
-  "hash": "42f129f15fae"
+  "date": "2026-11-02",
+  "hash": "fa21b5b3cacb"
  },
  "/knigi/blokirovka/": {
   "date": "2026-11-01",
   "hash": "2270de0321da"
  },
  "/knigi/bluzhdayuschiy-traktir/": {
-  "date": "2026-11-01",
-  "hash": "347964225557"
+  "date": "2026-11-02",
+  "hash": "f38b6ab99a27"
  },
  "/knigi/bunker/": {
   "date": "2026-11-01",
@@ -144,8 +144,8 @@
   "hash": "10bc69ead231"
  },
  "/knigi/korol-otverzhennyh/": {
-  "date": "2026-11-01",
-  "hash": "45c628989f4e"
+  "date": "2026-11-02",
+  "hash": "1139d0530e2d"
  },
  "/knigi/korol/": {
   "date": "2026-11-01",
@@ -292,16 +292,16 @@
   "hash": "78eb9c8c0488"
  },
  "/knigi/rubezh/": {
-  "date": "2026-11-01",
-  "hash": "86fe9d471898"
+  "date": "2026-11-02",
+  "hash": "992cca6624e0"
  },
  "/knigi/ruka-korolya-solnca/": {
-  "date": "2026-11-01",
-  "hash": "a687cb767e1a"
+  "date": "2026-11-02",
+  "hash": "fb8ec039edbc"
  },
  "/knigi/ruka-sfinksa/": {
-  "date": "2026-11-01",
-  "hash": "cc0e33e4d170"
+  "date": "2026-11-02",
+  "hash": "e78f8e4ac7da"
  },
  "/knigi/rycar/": {
   "date": "2026-11-01",
@@ -372,8 +372,8 @@
   "hash": "108d6548ee33"
  },
  "/knigi/voshozhdenie-senlina/": {
-  "date": "2026-11-01",
-  "hash": "966bc94a3073"
+  "date": "2026-11-02",
+  "hash": "2a518d808365"
  },
  "/knigi/voshozhdenie/": {
   "date": "2026-11-01",
@@ -420,175 +420,179 @@
   "hash": "5fab6666f01d"
  },
  "/zhanr/alternativnaya-istoriya/": {
-  "date": "2026-11-01",
-  "hash": "e6f8fdc7842e"
+  "date": "2026-11-02",
+  "hash": "2f42641e59c3"
  },
  "/zhanr/antiutopiya/": {
-  "date": "2026-11-01",
-  "hash": "35b58147293f"
+  "date": "2026-11-02",
+  "hash": "3825d46189bc"
  },
  "/zhanr/biologicheskaya-fantastika/": {
-  "date": "2026-11-01",
-  "hash": "7fc287bd10db"
+  "date": "2026-11-02",
+  "hash": "7d994a324b9b"
  },
  "/zhanr/detektiv/": {
-  "date": "2026-11-01",
-  "hash": "18cbcf101d2d"
+  "date": "2026-11-02",
+  "hash": "00b47a8e45f7"
  },
  "/zhanr/epicheskoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "210a1c4e5c40"
+  "date": "2026-11-02",
+  "hash": "85a603baea9e"
  },
  "/zhanr/fentezi/": {
-  "date": "2026-11-01",
-  "hash": "aaa16ce784df"
+  "date": "2026-11-02",
+  "hash": "9bba7b3085f2"
  },
  "/zhanr/filosofskaya-fantastika/": {
-  "date": "2026-11-01",
-  "hash": "559ec4bdc8dc"
+  "date": "2026-11-02",
+  "hash": "5037a957ca70"
  },
  "/zhanr/filosofskaya-proza/": {
-  "date": "2026-11-01",
-  "hash": "38e603549067"
+  "date": "2026-11-02",
+  "hash": "e61ce77a3dfa"
+ },
+ "/zhanr/filosofskoe-fentezi/": {
+  "date": "2026-11-02",
+  "hash": "e69321acb4ab"
  },
  "/zhanr/folklornaya-proza/": {
-  "date": "2026-11-01",
-  "hash": "6160410fc28b"
+  "date": "2026-11-02",
+  "hash": "e7a416b13ebe"
  },
  "/zhanr/geroicheskoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "6e76a9d3da79"
+  "date": "2026-11-02",
+  "hash": "9de4c59ec83f"
  },
  "/zhanr/gorodskoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "68afdf7d44c8"
+  "date": "2026-11-02",
+  "hash": "fa771fe149d5"
  },
  "/zhanr/horror/": {
-  "date": "2026-11-01",
-  "hash": "5e9288028163"
+  "date": "2026-11-02",
+  "hash": "4090ef4f88eb"
  },
  "/zhanr/intellektualnaya-proza/": {
-  "date": "2026-11-01",
-  "hash": "2eba2c732dc6"
+  "date": "2026-11-02",
+  "hash": "a9a4bb12a0d5"
  },
  "/zhanr/istoricheskoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "7d504483f3b3"
+  "date": "2026-11-02",
+  "hash": "80d63ad7f28f"
  },
  "/zhanr/kiberpank/": {
-  "date": "2026-11-01",
-  "hash": "efa4e3d1d93b"
+  "date": "2026-11-02",
+  "hash": "5d2b0796faa7"
  },
  "/zhanr/kosmicheskaya-fantastika/": {
-  "date": "2026-11-01",
-  "hash": "8bc2fef4709d"
+  "date": "2026-11-02",
+  "hash": "c9296e56d0fc"
  },
  "/zhanr/kosmicheskaya-opera/": {
-  "date": "2026-11-01",
-  "hash": "0e71e4132c15"
+  "date": "2026-11-02",
+  "hash": "9cd872ebc859"
  },
  "/zhanr/magicheskiy-realizm/": {
-  "date": "2026-11-01",
-  "hash": "a2f9a4e4c0f5"
+  "date": "2026-11-02",
+  "hash": "1ebc38f09d7e"
  },
  "/zhanr/misticheskaya-proza/": {
-  "date": "2026-11-01",
-  "hash": "37966e1ea25e"
+  "date": "2026-11-02",
+  "hash": "d1c7c91414ab"
  },
  "/zhanr/misticheskiy-triller/": {
-  "date": "2026-11-01",
-  "hash": "af8f0833481c"
+  "date": "2026-11-02",
+  "hash": "0d24439a6fe8"
  },
  "/zhanr/mistika/": {
-  "date": "2026-11-01",
-  "hash": "373029b2ee9d"
+  "date": "2026-11-02",
+  "hash": "3c7a146afd97"
  },
  "/zhanr/nauchnaya-fantastika/": {
-  "date": "2026-11-01",
-  "hash": "ef67a497bf8b"
+  "date": "2026-11-02",
+  "hash": "f8274e0ea34f"
  },
  "/zhanr/politicheskoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "6bb39ec8cd37"
+  "date": "2026-11-02",
+  "hash": "03734b8dfbf1"
  },
  "/zhanr/postapokaliptika/": {
-  "date": "2026-11-01",
-  "hash": "303b1341f6ec"
+  "date": "2026-11-02",
+  "hash": "e9562d9e13bd"
  },
  "/zhanr/postgumanizm/": {
-  "date": "2026-11-01",
-  "hash": "0132f30a2780"
+  "date": "2026-11-02",
+  "hash": "f8eae39b4259"
  },
  "/zhanr/postmodernizm/": {
-  "date": "2026-11-01",
-  "hash": "f6d3fc7ae7be"
+  "date": "2026-11-02",
+  "hash": "907bfa28436b"
  },
  "/zhanr/psihologicheskaya-proza/": {
-  "date": "2026-11-01",
-  "hash": "639893ed766b"
+  "date": "2026-11-02",
+  "hash": "216d68b360d7"
  },
  "/zhanr/psihologicheskiy-roman/": {
-  "date": "2026-11-01",
-  "hash": "fe633d15ef27"
+  "date": "2026-11-02",
+  "hash": "c6949758ca66"
  },
  "/zhanr/psihologicheskiy-triller/": {
-  "date": "2026-11-01",
-  "hash": "5c1ea65655e1"
+  "date": "2026-11-02",
+  "hash": "5aa7c3585b8b"
  },
  "/zhanr/satira/": {
-  "date": "2026-11-01",
-  "hash": "2eafd537f693"
+  "date": "2026-11-02",
+  "hash": "a4b59e070731"
  },
  "/zhanr/shpionskiy-triller/": {
-  "date": "2026-11-01",
-  "hash": "910ea14d854c"
+  "date": "2026-11-02",
+  "hash": "1e1dbf2ca008"
  },
  "/zhanr/socialnaya-fantastika/": {
-  "date": "2026-11-01",
-  "hash": "fab3aaae8b89"
+  "date": "2026-11-02",
+  "hash": "ee7e7d648add"
  },
  "/zhanr/sovremennaya-proza/": {
-  "date": "2026-11-01",
-  "hash": "1384b80aa872"
+  "date": "2026-11-02",
+  "hash": "acc1b045377d"
  },
  "/zhanr/stimpank/": {
-  "date": "2026-11-01",
-  "hash": "86b33a436a38"
+  "date": "2026-11-02",
+  "hash": "2f99d6479f0a"
  },
  "/zhanr/syurrealisticheskoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "5e4dfc4ca2b2"
+  "date": "2026-11-02",
+  "hash": "1d65208a953f"
  },
  "/zhanr/tehnotriller/": {
-  "date": "2026-11-01",
-  "hash": "fa46b6e9c627"
+  "date": "2026-11-02",
+  "hash": "1941700b8f96"
  },
  "/zhanr/temnoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "955fac929073"
+  "date": "2026-11-02",
+  "hash": "8d5ed01120a3"
  },
  "/zhanr/triller/": {
-  "date": "2026-11-01",
-  "hash": "31e576ff7192"
+  "date": "2026-11-02",
+  "hash": "e22448ee9706"
  },
  "/zhanr/tverdaya-nf/": {
-  "date": "2026-11-01",
-  "hash": "c17b4495d984"
+  "date": "2026-11-02",
+  "hash": "0879555aba3a"
  },
  "/zhanr/voennaya-fantastika/": {
-  "date": "2026-11-01",
-  "hash": "702f3d738c62"
+  "date": "2026-11-02",
+  "hash": "c57cb8987cfa"
  },
  "/zhanr/voennoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "ab65fb32985a"
+  "date": "2026-11-02",
+  "hash": "f497da13249d"
  },
  "/zhanr/young-adult/": {
-  "date": "2026-11-01",
-  "hash": "7d877292feb3"
+  "date": "2026-11-02",
+  "hash": "c13c25d8c310"
  },
  "/zhanr/yumoristicheskoe-fentezi/": {
-  "date": "2026-11-01",
-  "hash": "4519709b077e"
+  "date": "2026-11-02",
+  "hash": "f75219fbf1b1"
  }
 }
