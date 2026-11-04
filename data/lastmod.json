@@ -1,7 +1,7 @@
 {
  "/": {
-  "date": "2026-11-03",
-  "hash": "5b6e7592a978"
+  "date": "2026-11-04",
+  "hash": "47f64cd9c675"
  },
  "/knigi/36-ulic/": {
   "date": "2026-11-01",
@@ -82,6 +82,10 @@
  "/knigi/fraktalnyy-princ/": {
   "date": "2026-11-01",
   "hash": "9d109ded4726"
+ },
+ "/knigi/golod-bogov/": {
+  "date": "2026-11-04",
+  "hash": "786d887defd4"
  },
  "/knigi/gorod-bezdny/": {
   "date": "2026-11-01",
@@ -344,8 +348,8 @@
   "hash": "4c6ae00d65db"
  },
  "/knigi/ten-bogov/": {
-  "date": "2026-11-01",
-  "hash": "dbc45b67bbc4"
+  "date": "2026-11-04",
+  "hash": "59b6f847c32d"
  },
  "/knigi/tiraniya-babochki/": {
   "date": "2026-11-01",
