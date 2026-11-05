@@ -373,6 +373,10 @@ def main():
     books = json.loads((ROOT / "data/books.json").read_text(encoding="utf-8"))
     of = ROOT / "data/order.json"
     order = json.loads(of.read_text(encoding="utf-8")) if of.exists() else {}
+    for b in books:  # лишние пробелы в названиях (двойные, по краям)
+        for k in ("title", "author", "origTitle", "origAuthor", "series", "seriesOrig", "origin"):
+            if isinstance(b.get(k), str):
+                b[k] = re.sub(r"\s+", " ", b[k]).strip()
     for b in books:  # порядок «по моменту выхода перевода», см. import_from_claude.py
         if b["id"] in order:
             b["added"] = order[b["id"]]
