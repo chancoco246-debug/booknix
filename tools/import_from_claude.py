@@ -6,7 +6,7 @@
 
 Что делает:
   * вынимает данные книг из <script id="booknix-data">;
-  * сохраняет обложки в public/covers/<id>.webp (360x540, сжатие WebP);
+  * сохраняет обложки в docs/covers/<id>.webp (360x540, сжатие WebP);
   * записывает data/books.json и data/settings.json;
   * удаляет обложки книг, которых больше нет.
 """
@@ -20,7 +20,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-COVERS = ROOT / "public" / "covers"
+COVERS = ROOT / "docs" / "covers"
 DATA = ROOT / "data"
 COVER_W, COVER_H = 360, 540
 

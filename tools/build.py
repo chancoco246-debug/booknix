@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Собирает сайт Booknix в папку public/.
+"""Собирает сайт Booknix в папку docs/ (её публикует GitHub Pages).
 
     python3 tools/build.py
 
@@ -20,7 +20,7 @@ from PIL import Image
 import og
 
 ROOT = Path(__file__).resolve().parent.parent
-PUB = ROOT / "public"
+PUB = ROOT / "docs"
 BASE = "https://booknix.net"
 SITE_NAME = "Booknix"
 HOME_TITLE = "Booknix — зарубежная фантастика и фэнтези: переводы на русский и рекомендации"
@@ -136,7 +136,7 @@ def plural(n, one, few, many):
 # ---------- файлы ----------
 
 def asset(name, content):
-    """Пишет файл в public/assets и возвращает URL с меткой версии."""
+    """Пишет файл в docs/assets и возвращает URL с меткой версии."""
     (PUB / "assets").mkdir(parents=True, exist_ok=True)
     (PUB / "assets" / name).write_text(content, encoding="utf-8")
     v = hashlib.sha1(content.encode()).hexdigest()[:10]
@@ -506,9 +506,12 @@ def main():
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
         'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
         + "\n".join(url_xml(p) for p in pages) + "\n</urlset>\n", encoding="utf-8")
+    # GitHub Pages: свой домен и отключение Jekyll (иначе папки с «_» и т. п. обрабатываются)
+    (PUB / "CNAME").write_text("booknix.net\n", encoding="utf-8")
+    (PUB / ".nojekyll").write_text("", encoding="utf-8")
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\n"
                                     f"Sitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
-    print(f"Готово: {len(books)} книг, {len(gslug)} жанров → public/")
+    print(f"Готово: {len(books)} книг, {len(gslug)} жанров → docs/")
 
 
 if __name__ == "__main__":
