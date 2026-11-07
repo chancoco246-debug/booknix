@@ -115,6 +115,12 @@ def seo_desc(b):
     return short(head + lead + " " + (b.get("annotation") or ""), 165)
 
 
+def share_desc(b):
+    """Текст под картинкой при пересылке ссылки (Telegram, WhatsApp, Threads): начало аннотации."""
+    ann = re.sub(r"\s+", " ", str(b.get("annotation") or "")).strip()
+    return short(ann, 280) if ann else seo_desc(b)
+
+
 def genre_title(g, n):
     return f"{g}: {n} {plural(n, 'книга', 'книги', 'книг')} — переводы и рекомендации | {SITE_NAME}"
 
@@ -192,7 +198,7 @@ def prune(dirpath, keep):
             d.rmdir()
 
 
-def page(*, title, desc, canonical, og_img, og_type, jsonld, body, scripts, robots="index,follow",
+def page(*, title, desc, canonical, og_desc=None, og_img, og_type, jsonld, body, scripts, robots="index,follow",
          og_size=(1200, 630), extra_head=""):
     lds = "".join('<script type="application/ld+json">' + json.dumps(j, ensure_ascii=False).replace("</", "<\\/")
                   + "</script>\n" for j in (jsonld if isinstance(jsonld, list) else [jsonld]))
@@ -212,13 +218,13 @@ def page(*, title, desc, canonical, og_img, og_type, jsonld, body, scripts, robo
 <meta property="og:locale" content="ru_RU">
 <meta property="og:type" content="{og_type}">
 <meta property="og:title" content="{e(title)}">
-<meta property="og:description" content="{e(desc)}">
+<meta property="og:description" content="{e(og_desc or desc)}">
 <meta property="og:image" content="{e(og_img)}">
 <meta property="og:image:width" content="{og_size[0]}">
 <meta property="og:image:height" content="{og_size[1]}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(title)}">
-<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:description" content="{e(og_desc or desc)}">
 <meta name="twitter:image" content="{e(og_img)}">
 {extra_head}{GA_HEAD}{FONTS}
 <style>{RESET}</style>
@@ -441,7 +447,7 @@ def main():
                      (b["title"], url))]
         extra = f'<meta property="book:author" content="{e(b["author"])}">\n' + "".join(
             f'<meta property="book:tag" content="{e(g)}">\n' for g in b.get("genres") or [])
-        pages[path] = page(title=seo_title(b), desc=seo_desc(b), canonical=url, og_img=img, og_type="book",
+        pages[path] = page(title=seo_title(b), desc=seo_desc(b), og_desc=share_desc(b), canonical=url, og_img=img, og_type="book",
                            jsonld=ld, body=book_static(b, settings, by_series, books, gslug), scripts=scripts,
                            extra_head=extra)
         write_dir_page(PUB / "knigi" / b["id"], pages[path])
