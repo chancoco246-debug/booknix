@@ -116,9 +116,9 @@ def seo_desc(b):
 
 
 def share_desc(b):
-    """Текст под картинкой при пересылке ссылки (Telegram, WhatsApp, Threads): начало аннотации."""
-    ann = re.sub(r"\s+", " ", str(b.get("annotation") or "")).strip()
-    return short(ann, 280) if ann else seo_desc(b)
+    """Текст под картинкой при пересылке ссылки (Telegram, WhatsApp): первый абзац аннотации."""
+    ann = og.first_paragraph(b.get("annotation"))
+    return short(ann, 400) if ann else seo_desc(b)
 
 
 def genre_title(g, n):

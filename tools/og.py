@@ -87,38 +87,76 @@ def book_card(b, cover_path, out):
     paste_with_shadow(canvas, cover.resize((cw, ch), Image.LANCZOS), (64, (H - ch) // 2))
 
     d = ImageDraw.Draw(canvas)
-    x = 64 + cw + 56
-    tw = W - x - 60
-    y = 64
+    x = 64 + cw + 52
+    tw = W - x - 56
+    y = 52
     label, bg, fg = BADGES.get(b["type"], BADGES["rec"])
-    fb = font("GolosText", 22, "Bold")
-    bw = d.textlength(label, font=fb) + 28
-    d.rounded_rectangle((x, y, x + bw, y + 40), 6, fill=bg)
-    d.text((x + 14, y + 7), label, font=fb, fill=fg)
-    y += 70
+    fb = font("GolosText", 19, "Bold")
+    bw = d.textlength(label, font=fb) + 24
+    d.rounded_rectangle((x, y, x + bw, y + 34), 6, fill=bg)
+    d.text((x + 12, y + 6), label, font=fb, fill=fg)
+    y += 52
 
-    for size in (60, 54, 48, 42, 36):
+    for size in (44, 40, 36, 32, 28):
         ft = font("Unbounded", size, "Bold")
         lines = wrap(d, b["title"], ft, tw)
-        if len(lines) <= 3:
+        if len(lines) <= 2:
             break
-    lines = lines[:3]
-    for ln in lines:
+    if len(lines) > 2:  # не влезло и мелким шрифтом — вторая строка с многоточием
+        lines = [lines[0], " ".join(lines[1:])]
+    for ln in lines[:2]:
         d.text((x, y), fit_one_line(d, ln, ft, tw), font=ft, fill=PAPER)
-        y += round(size * 1.18)
-    y += 14
-    fa = font("GolosText", 32, "Medium")
+        y += round(size * 1.16)
+    y += 8
+    fa = font("GolosText", 27, "Medium")
     d.text((x, y), fit_one_line(d, b["author"], fa, tw), font=fa, fill=(220, 212, 198))
-    y += 48
+    y += 38
     orig = " · ".join(v for v in [str(b.get("origTitle") or "").strip(), str(b.get("year") or "").strip()] if v)
     if orig:
-        fo = font("GolosText", 24, "Regular")
+        fo = font("GolosText", 21, "Regular")
         d.text((x, y), fit_one_line(d, orig, fo, tw), font=fo, fill=MUTE)
+        y += 30
 
-    end = logo(d, x, H - 64 - 34, 34)
-    fs = font("GolosText", 24, "Regular")
-    d.text((end + 18, H - 64 - 27), "booknix.net", font=fs, fill=MUTE)
+    # первый абзац аннотации — столько строк, сколько помещается до логотипа
+    para = first_paragraph(b.get("annotation"))
+    logo_y = H - 52 - 28
+    if para:
+        y += 14
+        d.line((x, y, x + 56, y), fill=AMBER, width=3)
+        y += 20
+        fp = ImageFont.truetype(str(FONTS / "Literata.ttf"), 23)
+        fp.set_variation_by_axes([18, 420])
+        lh = 33
+        max_lines = max(0, (logo_y - 26 - y) // lh)
+        lines = wrap(d, para, fp, tw)
+        if len(lines) > max_lines:
+            lines = lines[:max_lines]
+            if lines:
+                last = lines[-1]
+                while last and d.textlength(last.rstrip(" ,.;:—") + "…", font=fp) > tw:
+                    last = last.rsplit(" ", 1)[0] if " " in last else last[:-1]
+                lines[-1] = last.rstrip(" ,.;:—") + "…"
+        for ln in lines:
+            d.text((x, y), ln, font=fp, fill=(228, 221, 207))
+            y += lh
+
+    end = logo(d, x, logo_y, 28)
+    fs = font("GolosText", 21, "Regular")
+    d.text((end + 16, logo_y + 6), "booknix.net", font=fs, fill=MUTE)
     canvas.convert("RGB").save(out, "JPEG", quality=86, optimize=True, progressive=True)
+
+
+def first_paragraph(text):
+    import re
+    paras = [re.sub(r"\s+", " ", p).strip() for p in re.split(r"\n\s*\n", str(text or ""))]
+    paras = [p for p in paras if p]
+    if not paras:
+        return ""
+    out = paras[0]
+    # слишком короткий первый абзац (одна фраза) — добавляем следующий
+    if len(out) < 140 and len(paras) > 1:
+        out += " " + paras[1]
+    return out
 
 
 def home_collage(cover_paths, out, tagline):
