@@ -1,7 +1,7 @@
 {
  "/": {
-  "date": "2026-11-08",
-  "hash": "723b419f4b0d"
+  "date": "2026-11-09",
+  "hash": "fcc103cbac14"
  },
  "/knigi/36-ulic/": {
   "date": "2026-11-07",
@@ -338,6 +338,10 @@
  "/knigi/semiozis/": {
   "date": "2026-11-07",
   "hash": "adecc326a34e"
+ },
+ "/knigi/shestoy-nik/": {
+  "date": "2026-11-09",
+  "hash": "da740fa2c6d0"
  },
  "/knigi/siniy-fonar-sbornik-rasskazov/": {
   "date": "2026-11-07",
