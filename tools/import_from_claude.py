@@ -49,6 +49,15 @@ def main(path: str) -> None:
     if not m:
         sys.exit("В файле не найдены данные книг (booknix-data).")
     state = json.loads(m.group(1))
+    # код сайта на claude.ai не менялся? (иначе изменения надо перенести в src/)
+    import hashlib
+    cf = DATA / "claude_code.json"
+    if cf.exists():
+        ref = json.loads(cf.read_text(encoding="utf-8"))
+        for key, rx in (("app", r'<script id="bx-app">(.*?)</script>'), ("css", r'<style id="bx-style">(.*?)</style>')):
+            mm = re.search(rx, html, re.S)
+            if mm and hashlib.sha1(mm.group(1).strip().encode()).hexdigest() != ref.get(key):
+                print(f"ВНИМАНИЕ: код ({key}) версии на claude.ai изменился — перенести изменения в src/")
     bf = DATA / "books.json"
     old_types = {b["id"]: b.get("type") for b in json.loads(bf.read_text(encoding="utf-8"))} if bf.exists() else {}
     COVERS.mkdir(parents=True, exist_ok=True)
