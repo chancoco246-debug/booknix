@@ -1,7 +1,7 @@
 {
  "/": {
-  "date": "2026-11-21",
-  "hash": "0b5f26802aec"
+  "date": "2026-11-23",
+  "hash": "f68bb2a933a9"
  },
  "/knigi/36-ulic/": {
   "date": "2026-11-21",
@@ -52,16 +52,20 @@
   "hash": "9ccffba263e1"
  },
  "/knigi/deti-pamyati/": {
-  "date": "2026-11-21",
-  "hash": "a18b58a52cf6"
+  "date": "2026-11-23",
+  "hash": "9965bd246823"
+ },
+ "/knigi/deti-razdora/": {
+  "date": "2026-11-23",
+  "hash": "74dcd5bb33b6"
  },
  "/knigi/deti-razrusheniya/": {
-  "date": "2026-11-21",
-  "hash": "da999791fd55"
+  "date": "2026-11-23",
+  "hash": "4a79332cf055"
  },
  "/knigi/deti-vremeni/": {
-  "date": "2026-11-21",
-  "hash": "0677161280b8"
+  "date": "2026-11-23",
+  "hash": "83612c280010"
  },
  "/knigi/dolgiy-put-k-malenkoy-serditoy-planete/": {
   "date": "2026-11-18",
